@@ -41,7 +41,7 @@ router.post('/pendingReservationDetails', asyncHandler(async function _pendingRe
     res.ok(data);
 }))
 
-router.patch('/:reservationId', asyncHandler(async function _pendingReservationDetails(req, res, next) {
+router.patch('/:reservationId', asyncHandler(async function _updateReservationRequestStatus(req, res, next) {
     const data = await updateReservationRequestStatus(req?.params?.reservationId, req?.body);
     res.ok(data);
 }))
