@@ -7,7 +7,7 @@ const reservationDetails = require("../controllers/reservation/details");
 const verifyPayment = require("../controllers/razorpay/verifyPayment");
 const deniedPayment = require("../controllers/razorpay/deniedPayment");
 const pendingReservationDetails = require("../controllers/reservation/pendingReservationDetails");
-// const updateReservationRequestStatus = require("../controllers/reservation/UpdateReservationRequestStatus");
+const updateReservationRequestStatus = require("../controllers/reservation/updateReservationRequestStatus");
 const router = require("express").Router();
 
 router.post('/bookProperty', validate(validation.RESERVATION_CREATE),
@@ -41,9 +41,9 @@ router.post('/pendingReservationDetails', asyncHandler(async function _pendingRe
     res.ok(data);
 }))
 
-// router.patch('/:reservationId', asyncHandler(async function _updateReservationRequestStatus(req, res, next) {
-//     const data = await updateReservationRequestStatus(req?.params?.reservationId, req?.body);
-//     res.ok(data);
-// }))
+router.patch('/:reservationId', asyncHandler(async function _updateReservationRequestStatus(req, res, next) {
+    const data = await updateReservationRequestStatus(req?.params?.reservationId, req?.body);
+    res.ok(data);
+}))
 
 module.exports = router;
