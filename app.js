@@ -19,6 +19,9 @@ app.use(fileUpload());
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+app.get('/health', (req,res) => {
+  res.send('API is running')
+})
 app.use(require('./middlewares/response.interceptor'));
 
 app.use(logger('dev'));
