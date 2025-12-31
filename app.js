@@ -5,12 +5,12 @@ const logger = require('morgan');
 const cors = require('cors');
 const createHttpError = require('http-errors');
 const fileUpload = require('express-fileupload');
-require('dotenv').config({ path: '.env.example', quiet: true });
+require('dotenv').config();
 const helmet = require('helmet');
 const app = express();
 
 app.use(cors({
-  origin: [process.env.FRONTEND_URL, '*'],
+  origin: [process.env.FRONTEND_URL, 'http://192.168.100.84:8080'],
   optionsSuccessStatus: 200
 }));
 app.use(fileUpload());
@@ -25,7 +25,7 @@ app.use(logger('dev'));
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-// app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(helmet());
 
 app.get('/health', (req,res) => {
