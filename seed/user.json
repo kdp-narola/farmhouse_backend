@@ -1,0 +1,11 @@
+[
+    {
+        "fullName": "Super Admin",
+        "password": "$2b$10$/.LMDiMnfeu6xYhYeLiyYeptkTmSXwyx2Q8euvLcTWEgFwj5Im.fG",
+        "lockUntil": null,
+        "razorpayCustomerId": "cust_RnsaxQ4z0pqaqk",
+        "status": "VERIFIED",
+        "totalAttempts": 0,
+        "razorpayFundAccountId": null
+    }
+]

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body
+    style="margin: 0; padding: 0; background-color: #edf2fb; font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh;">
+    <div
+        style="background-color: #c4cee6; color: #1a202c; padding: 40px 20px; border-radius: 12px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); text-align: center; width: 80%; max-width: 500px;">
+        <p style="font-size: 28px; font-weight: 700; margin: 0 0 10px 0;">Register</p>
+        <p style="font-size: 16px; margin-bottom: 25px; color: #4a5568;">Please enter your details
+            below</p>
+        <div>
+            <form action="" style="display: flex; flex-direction: column; gap: 15px; margin-bottom: 25px;">
+                <div>
+                    <label for="Email" style="font-size: 16px; font-weight: 600; color: #333;"> Email: </label>
+                    <input type="email" name="email" id="email"
+                        style="padding: 12px; font-size: 16px; border: 1px solid #ccc; border-radius: 8px; outline: none; ">
+                </div>
+                <div>
+                    <label for="Name" style="font-size: 16px; font-weight: 600; color: #333;"> Name: </label>
+                    <input type="text" name="Name" id="Name"
+                        style="padding: 12px; font-size: 16px; border: 1px solid #ccc; border-radius: 8px; outline: none;">
+                </div>
+                <div>
+                    <button type="submit"
+                        style="padding: 12px; background-color: #708dd3; color: #fff; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; ">
+                        Submit </button>
+                </div>
+            </form>
+        </div>
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            <a href="<%= data.url %>"
+                style="background-color: #ebeef3; color: #1a202c; text-decoration: none; padding: 12px 20px; border-radius: 6px; font-weight: bold; font-size: 16px; gap: 20px; display: flex; align-items: center; justify-content: center;">
+                <div style="display: flex; align-items: center;">
+                    <i class="fa-brands fa-google" style="margin-right: 10px; position: relative;"></i>
+                    <span style="display: inline-block; padding-left: 10px; position: relative;"> Continue with
+                        Google</span>
+                </div>
+            </a>
+        </div>
+    </div>
+</body>
+
+</html>
