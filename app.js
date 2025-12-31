@@ -5,12 +5,12 @@ const logger = require('morgan');
 const cors = require('cors');
 const createHttpError = require('http-errors');
 const fileUpload = require('express-fileupload');
-require('dotenv').config();
+require('dotenv').config({ path: '.env.example', quiet: true });
 const helmet = require('helmet');
 const app = express();
 
 app.use(cors({
-  origin: [process.env.FRONTEND_URL, 'http://192.168.100.84:8080'],
+  origin: [process.env.FRONTEND_URL, 'http://localhost:8080'],
   optionsSuccessStatus: 200
 }));
 app.use(fileUpload());
