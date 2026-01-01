@@ -7,7 +7,7 @@ async function ownerBookingDetails(authUser, payload) {
   const {
     page = 1,
     limit = 10,
-    sort = { checkIn: -1 },
+    sort = { createdAt: -1 },
     select = "",
     search = {}
   } = options;
@@ -20,7 +20,7 @@ async function ownerBookingDetails(authUser, payload) {
     const properties = await Property.find({
       user: authUser._id,
       deletedAt: null
-    }).select("_id");
+    }).select("_id").sort('createdAt', -1);
 
     matchStage.property = {
       $in: properties.map(p => p._id)

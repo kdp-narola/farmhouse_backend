@@ -7,7 +7,7 @@ async function pendingReservationDetails(authUser, payload) {
   const {
     page = 1,
     limit = 10,
-    sort = { checkIn: -1 },
+    sort = { createdAt: -1 },
     select = "",
     search = {}
   } = options;
