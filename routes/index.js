@@ -15,5 +15,6 @@ router.use('/bookings', require('./booking.routes'));
 router.use('/review', require('./review.routes'));
 router.use('/owner', verifyOwner, require('./owner.routes'));
 router.use('/admin', verifyAdmin, require('./admin.routes'));
+router.use('/statistics', require('./statistics.routes'));
 
 module.exports = router;
