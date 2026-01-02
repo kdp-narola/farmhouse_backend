@@ -4,8 +4,14 @@ const Amenities = require("../../models/Amenities");
 const Property = require("../../models/Property");
 const imageUpload = require("../../utils/images/imageUpload");
 const HouseRule = require("../../models/HouseRule");
+const { PROPERTY_STATUS } = require("../../constants/common.constant");
+const User = require("../../models/User");
 
 async function publishProperty(authUser, body, files) {
+    const user = await User.findById(authUser._id).select("role").lean();
+    console.log('user', user)
+    if(!user) throw new createHttpError[404](ERRORS.USER_NOT_FOUND);
+
     let { title, description, category, max_capacity, noBedroom, noBathroom, area_sq, pricePerDay, houserule, pricePerHours, amenities,
         houseruleFromOwner } = body;
     const { addressLine, pincode, street, state, city, district, landMark, mapLink } = body;
@@ -21,7 +27,7 @@ async function publishProperty(authUser, body, files) {
     images = await imageUpload(images);
     const propertyPayload = {
         title, description, category, max_capacity, area_sq, noBedroom, noBathroom, pricePerDay, pricePerHours,
-        amenities: checkAmenities, user: authUser._id, images,
+        amenities: checkAmenities, user: authUser._id, images, status: user.role === 'OWNER' ? PROPERTY_STATUS.PEDNING : PROPERTY_STATUS.APPROVED,
         address: { addressLine, pincode, street, state, city, district, landMark, mapLink, houseruleFromOwner },
     }
     if (checkHouseRule && checkHouseRule.length) propertyPayload.houserule = checkHouseRule;

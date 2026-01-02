@@ -15,5 +15,10 @@ module.exports = {
         SUCCESS: 'SUCCESS',
         FAILED: 'FAILED',
         REFUNDED: 'REFUNDED'
+    },
+    PROPERTY_STATUS: {
+        PEDNING: 'PENDING',
+        APPROVED: 'APPROVED',
+        REJECTED: 'REJECTED',
     }
 }

@@ -3,7 +3,7 @@ const Property = require("../../models/Property");
 const { ERRORS } = require("../../constants/errors.constants");
 const calculatePrice = require("../property/calculatePrice");
 const propertyAvailable = require("./propertyAvailble");
-const { BOOKING_TYPE } = require("../../constants/common.constant");
+const { BOOKING_TYPE, RESERVATION_STATUS } = require("../../constants/common.constant");
 const razorpay = require("../../config/razorpay");
 const crypto = require('crypto');
 const Reservation = require("../../models/Reservation");
@@ -45,7 +45,8 @@ async function bookProperty(authUser, body) {
         guest: guest,
         finalAmount: finalAmount,
         specialRequest: specialRequest ? specialRequest : null,
-        bookingType: BOOKING_TYPE[bookingType]
+        bookingType: BOOKING_TYPE[bookingType],
+        reservationStatus: RESERVATION_STATUS.CONFIRMED
     });
 
     const options = {

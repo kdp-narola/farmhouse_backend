@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const { USER, AMENITIES, PROPERTY, HOUSERULE } = require('../constants/db.constant');
+const { PROPERTY_STATUS } = require('../constants/common.constant');
 
 const propertySchema = new mongoose.Schema({
     title: {
@@ -95,7 +96,13 @@ const propertySchema = new mongoose.Schema({
         mapLink: {
             type: String,
             required: [true, 'Google Map Link is required.']
-        }
+        },
+    },
+    status: {
+        type: String,
+        enum: Object.values(PROPERTY_STATUS),
+        default: PROPERTY_STATUS.PEDNING,
+        required: [true, 'Property status is Required.']
     },
     deletedAt: {
         type: Date,

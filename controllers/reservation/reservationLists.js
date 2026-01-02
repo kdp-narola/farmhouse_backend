@@ -1,7 +1,7 @@
 const Reservation = require("../../models/Reservation");
 const User = require("../../models/User");
 
-async function pendingReservationDetails(authUser, payload) {
+async function reservationLists(authUser, payload) {
   const { options = {} } = payload;
 
   const {
@@ -19,9 +19,7 @@ async function pendingReservationDetails(authUser, payload) {
 
   const role = user.role;
 
-  const matchStage = {
-    reservationStatus: "PENDING"
-  };
+  const matchStage = {};
 
   if (role === "CUSTOMER") {
     matchStage.user = authUser._id;
@@ -141,4 +139,4 @@ async function pendingReservationDetails(authUser, payload) {
   };
 }
 
-module.exports = pendingReservationDetails;
+module.exports = reservationLists;

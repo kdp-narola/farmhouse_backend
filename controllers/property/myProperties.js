@@ -1,3 +1,4 @@
+const { PROPERTY_STATUS } = require("../../constants/common.constant");
 const pagination = require("../../helpers/pagination");
 const Property = require("../../models/Property");
 

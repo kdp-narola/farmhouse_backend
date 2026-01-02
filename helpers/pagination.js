@@ -3,7 +3,7 @@ async function pagination(model, filter, population, body) {
     const page = (parseInt(body?.options?.page) <= 0) ? 1 : parseInt(body?.options?.page) || 1;
     const limit = (parseInt(body?.options?.limit) <= 0) ? 25 : parseInt(body?.options?.limit) || 25;
     const search = body?.options?.search || {}
-    const select = body?.options?.select || '-__v -createAt ';
+    const select = body?.options?.select || '-__v';
     const sort = body?.options?.sort || '-createdAt';
     const skip = (page - 1) * limit;
     const $or = [];

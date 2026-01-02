@@ -1,11 +1,14 @@
 const mongoose = require("mongoose");
 const paginationAggregation = require('../../helpers/aggregationPagination');
 const Property = require("../../models/Property");
+const { PROPERTY_STATUS } = require("../../constants/common.constant");
 
 async function listProperty(body) {
     if (body.filter) {
         const filterArray = ['amenities', 'houserule', 'category'];
-        const filter = {};
+        const filter = {
+            status: PROPERTY_STATUS.APPROVED
+        };
 
         filterArray.forEach(field => {
             if (body.filter[field] && Array.isArray(body.filter[field]) && body.filter[field].length) {
@@ -39,7 +42,7 @@ async function listProperty(body) {
     const property = await paginationAggregation(Property, { ...body.filter, deletedAt: null }, body?.population, body);
 
     const filterInformation = await Property.aggregate([
-        { $match: { deletedAt: null } },
+        { $match: { deletedAt: null, status: PROPERTY_STATUS.APPROVED } },
         {
             $group: {
                 _id: null, minPricePerDay: { $min: "$pricePerDay" }, maxPricePerDay: { $max: "$pricePerDay" },

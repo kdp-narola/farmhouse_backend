@@ -6,8 +6,7 @@ const validate = require('../middlewares/validate');
 const reservationDetails = require("../controllers/reservation/details");
 const verifyPayment = require("../controllers/razorpay/verifyPayment");
 const deniedPayment = require("../controllers/razorpay/deniedPayment");
-const pendingReservationDetails = require("../controllers/reservation/pendingReservationDetails");
-const updateReservationRequestStatus = require("../controllers/reservation/updateReservationRequestStatus");
+const reservationLists = require("../controllers/reservation/reservationLists");
 const router = require("express").Router();
 
 router.post('/bookProperty', validate(validation.RESERVATION_CREATE),
@@ -36,13 +35,8 @@ router.get('/details/:reservationId', asyncHandler(async function _reservationDe
     res.ok(data);
 }))
 
-router.post('/pendingReservationDetails', asyncHandler(async function _pendingReservationDetails(req, res, next) {
-    const data = await pendingReservationDetails(req?.authUser, req?.body);
-    res.ok(data);
-}))
-
-router.patch('/:reservationId', asyncHandler(async function _updateReservationRequestStatus(req, res, next) {
-    const data = await updateReservationRequestStatus(req?.params?.reservationId, req?.body);
+router.post('/reservationLists', asyncHandler(async function _reservationLists(req, res, next) {
+    const data = await reservationLists(req?.authUser, req?.body);
     res.ok(data);
 }))
 

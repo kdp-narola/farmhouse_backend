@@ -1,4 +1,5 @@
 const myProperties = require('../controllers/property/myProperties');
+const pendingApprovalProperties = require('../controllers/property/pendingApprovalProperties');
 const onbaordAccount = require('../controllers/razorpay/onboardAccount');
 const reservationAction = require('../controllers/reservation/action');
 const bookingDetails = require('../controllers/reservation/bookingDetails');
@@ -15,6 +16,11 @@ router.post('/onboardPaymentAccount', asyncHandler(async function _onbaordAccoun
 
 router.post('/myProperties', asyncHandler(async function _(req, res, next) {
     const data = await myProperties(req.authUser, req.body);
+    res.ok(data)
+}));
+
+router.post('/pendingApprovalProperties', asyncHandler(async function _pendingApprovalProperties(req, res, next) {
+    const data = await pendingApprovalProperties(req.authUser, req.body);
     res.ok(data)
 }));
 
